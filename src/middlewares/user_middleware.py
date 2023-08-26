@@ -36,6 +36,6 @@ def login_user_middleware():
         existing_user = User.find_by_username(username)
         
         if not existing_user:
-            return make_response({'message': USER_NOT_EXISTS_ERROR} , HTTP_400_BAD_REQUEST)
+            return make_response({'message': USER_NOT_EXISTS_ERROR.format(username = username)} , HTTP_400_BAD_REQUEST)
 
         
