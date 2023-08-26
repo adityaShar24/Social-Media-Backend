@@ -1,8 +1,11 @@
 from flask import Flask
 from routes.user_router import auth_bp
+from flask_jwt_extended import JWTManager
 from middlewares.user_middleware import register_user_middleware , login_user_middleware
 
 app = Flask(__name__)
+
+JWTManager(app)
 
 app.config['SECRET_KEY'] = "my_secret_key"
 
