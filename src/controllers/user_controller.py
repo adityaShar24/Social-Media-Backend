@@ -8,31 +8,41 @@ import datetime
 
 def register():
     body = json.loads(request.data)
+    
     username = body['username']
     password = body['password']
+    
     user = User(username , password)
+    
     saved_users = user.save_user()
     json_version = json_util.dumps(saved_users)
+    
     return make_response({'message': USER_REGISTERED_MESSAGE.format(username = username), 'user': json_version} , HTTP_201_CREATED)
 
 def login():
     body = json.loads(request.data)
     username = body['username']
     password = body['password']
+    
     user = User.find_by_username(username)
         
     if password != user['password']:
         return make_response({'message':INVALID_PASSWORD_ERROR} , HTTP_400_BAD_REQUEST)
     
     access_token = create_access_token(identity=username , fresh=datetime.timedelta(minutes=30))
+    
     return make_response({'message':{'access token':access_token}} , HTTP_201_CREATED)
-
 
 def make_request():
     body = json.loads(request.data)
-    From = body['userID']
-    to = body['userID']
+    From = body['From']
+    to = body['to']
     
-    request = Request.make_request(From , to)
-    json_version = json_util.dumps(request)
-    return make_request({'message': REQUEST_SENT_MESSAGE , 'request': json_version} , HTTP_201_CREATED)
+    request_instance = Request(From, to)
+    request_id = request_instance.make_request()
+    
+    json_verison = json_util.dumps(request_id)
+    
+    return make_response({'message':REQUEST_SENT_MESSAGE , "request": json_verison} , HTTP_201_CREATED)
+    
+    
