@@ -15,4 +15,6 @@ REGISTER_USER_ENDPOINT = 'auth_bp.register_user_wrapper'
 LOGIN_USER_ENDPOINT = 'auth_bp.login_user_wrapper'
 
 INVALID_PASSWORD_ERROR = 'Invalid password , please provide the correct one.'
-USER_ID_MISSING_ERROR = 'From userId field should not be empty'
+USER_ID_MISSING_ERROR = 'userId field should not be empty'
+
+REQUEST_SENT_MESSAGE = 'request sent successfully!'
