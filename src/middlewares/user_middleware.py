@@ -1,6 +1,7 @@
 from flask import request , make_response , json
 from utils.constants import USERNAME_MISSING_ERROR , HTTP_400_BAD_REQUEST , PASSWORD_MISSING_ERROR , EXISITING_USERNAME_ERROR , USER_NOT_EXISTS_ERROR , REGISTER_USER_ENDPOINT , LOGIN_USER_ENDPOINT , USER_ID_MISSING_ERROR , MAKE_REQUEST_ENDPOINT
 from models.user_model import User
+from models.make_request_model import Request
 
 
 def register_user_middleware():
@@ -42,9 +43,9 @@ def login_user_middleware():
 def make_request_middleware():
     if request.endpoint == MAKE_REQUEST_ENDPOINT:
         body = json.loads(request.data)
-        From = body['userId']
-        to = body['userId']
-        
+        From = body['From']
+        to = body['to']
+                
         if not From:
             return make_response({'message': USER_ID_MISSING_ERROR} , HTTP_400_BAD_REQUEST)
         
