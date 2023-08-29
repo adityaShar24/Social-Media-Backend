@@ -38,11 +38,13 @@ def make_request():
     From = body['From']
     to = body['to']
     
-    request_instance = Request(From, to)
+    user_instance = User(From , to)
+    request_instance = Request(From , to)
+    add_req_id = User.add_request_id(user_instance , From , to)
     request_id = request_instance.make_request()
     
     json_verison = json_util.dumps(request_id)
     
-    return make_response({'message':REQUEST_SENT_MESSAGE , "request": json_verison} , HTTP_201_CREATED)
+    return make_response({'message':REQUEST_SENT_MESSAGE , "request": json_verison } , HTTP_201_CREATED)
     
     
