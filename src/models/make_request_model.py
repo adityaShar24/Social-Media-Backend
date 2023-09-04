@@ -2,9 +2,9 @@ from bson.objectid import ObjectId
 from database.mongo import request_collection
 
 class Request:
-    def __init__(self, userId , status = "pending"):
-        self.From = ObjectId(userId)
-        self.to = ObjectId(userId)
+    def __init__(self, userId1 , userId2 , status = "pending"):
+        self.From = ObjectId(userId1)
+        self.to = ObjectId(userId2)
         self.status = status
     
     def make_request(self):
