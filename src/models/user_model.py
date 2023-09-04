@@ -1,4 +1,5 @@
 from database.mongo import users_collection
+from bson.objectid import ObjectId
 
 class User:
     def __init__(self , username , password):
@@ -8,12 +9,15 @@ class User:
         self.request_received = []
         self.friends = []
     
-    def add_request_id(self , From , to):
-        self.request_sent.append(From)
-        self.request_received.append(to)
-        self.save_user()
-        return self.request_sent and self.request_received
-    
+    def add_request_id(From , to  , request_id):
+        fromUser = users_collection.update_one({ "_id": ObjectId(From) }, { "$push": { "request_sent": request_id } })
+        toUser = users_collection.update_one({ "_id": ObjectId(to) }, { "$push": { "request_received": request_id } })
+
+    def remove_request_id(From , to , request_id):
+        fromUser = users_collection.update_one({ "_id": ObjectId(From) }, { "$pull": { "request_sent": request_id } })
+        toUser = users_collection.update_one({ "_id": ObjectId(to) }, { "$pull": { "request_received": request_id } })
+
+        
     def save_user(self):
         user_id = users_collection.insert_one({'username':self.username , 'password':self.password , 'friends': self.friends , 'request_sent': self.request_sent , 'request_received':self.request_received}).inserted_id
         return user_id
