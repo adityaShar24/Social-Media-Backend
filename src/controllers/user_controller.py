@@ -3,7 +3,7 @@ from models.user_model import User
 from models.make_request_model import Request
 from database.mongo import request_collection
 from flask_jwt_extended import create_access_token
-from utils.constants import HTTP_201_CREATED , HTTP_400_BAD_REQUEST , USER_REGISTERED_MESSAGE , INVALID_PASSWORD_ERROR , REQUEST_SENT_MESSAGE
+from utils.constants import HTTP_201_CREATED , HTTP_400_BAD_REQUEST , USER_REGISTERED_MESSAGE , INVALID_PASSWORD_ERROR , REQUEST_SENT_MESSAGE , REQUEST_DELETED_MESSAGE
 import bson.json_util as json_util
 import datetime
 from bson.objectid import ObjectId
@@ -54,11 +54,8 @@ def remove_friend():
     
     request_doc = request_collection.find_one({"_id": ObjectId(request_id)})
     
-    if not request_doc:
-        return make_response({'message':"No request with from current Id"} , HTTP_400_BAD_REQUEST)
-    
     User.remove_request_id(request_doc['from'] , request_doc['to'] ,  ObjectId(request_id))
     request_collection.find_one_and_delete({ "_id":  ObjectId(request_id) })
     
-    return make_response({'message':"request deleted successfully"} , HTTP_201_CREATED)
+    return make_response({'message': REQUEST_DELETED_MESSAGE} , HTTP_201_CREATED)
     
