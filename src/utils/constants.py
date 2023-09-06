@@ -20,4 +20,7 @@ INVALID_PASSWORD_ERROR = 'Invalid password , please provide the correct one.'
 USER_ID_MISSING_ERROR = 'userId field should not be empty'
 
 REQUEST_SENT_MESSAGE = 'request sent successfully!'
+REQUEST_DELETED_MESSAGE = "request deleted successfully"
 REQUEST_ID_MISSING_ERROR = "No request with from current Id"
+
+AACCEPT_REQUEST_ENDPONT = 'auth_bp.accept_request_wrapper'
