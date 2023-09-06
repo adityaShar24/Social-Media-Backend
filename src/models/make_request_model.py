@@ -11,5 +11,15 @@ class Request:
         request_id = request_collection.insert_one({'from':self.From , 'to': self.to , 'status': self.status}).inserted_id
         return request_id
     
+    def accept_request(request_id):
+        find_request = request_collection.find_one({"_id": ObjectId(request_id)})
+        
+        update_to_accepted = request_collection.update_one(
+            {"_id":request_id} , 
+            { "$set" : { "status" : "accepted"}}
+        )
+        
+        
+        
     
     
