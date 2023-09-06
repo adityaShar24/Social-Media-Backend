@@ -1,5 +1,5 @@
 from flask import request , make_response , json
-from utils.constants import USERNAME_MISSING_ERROR , HTTP_400_BAD_REQUEST , PASSWORD_MISSING_ERROR , EXISITING_USERNAME_ERROR , USER_NOT_EXISTS_ERROR , REGISTER_USER_ENDPOINT , LOGIN_USER_ENDPOINT , USER_ID_MISSING_ERROR , MAKE_REQUEST_ENDPOINT , REQUEST_ID_MISSING_ERROR ,REMOVE_REQUEST_ENDPOINT
+from utils.constants import USERNAME_MISSING_ERROR , HTTP_400_BAD_REQUEST , PASSWORD_MISSING_ERROR , EXISITING_USERNAME_ERROR , USER_NOT_EXISTS_ERROR , REGISTER_USER_ENDPOINT , LOGIN_USER_ENDPOINT , USER_ID_MISSING_ERROR , MAKE_REQUEST_ENDPOINT , REQUEST_ID_MISSING_ERROR ,REMOVE_REQUEST_ENDPOINT , ACCEPT_REQUEST_ENDPOINT
 from models.user_model import User
 from models.make_request_model import Request
 
@@ -54,6 +54,15 @@ def make_request_middleware():
     
 def remove_friend_request_middleware():
     if request.endpoint == REMOVE_REQUEST_ENDPOINT:
+        body = json.loads(request.data)
+        
+        request_id = body['request_id']
+        
+        if not request_id:
+            return make_response({'message': REQUEST_ID_MISSING_ERROR})
+
+def accept_request_middleware():
+    if request.endpoint == ACCEPT_REQUEST_ENDPOINT:
         body = json.loads(request.data)
         
         request_id = body['request_id']
