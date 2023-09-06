@@ -3,7 +3,7 @@ from models.user_model import User
 from models.make_request_model import Request
 from database.mongo import request_collection
 from flask_jwt_extended import create_access_token
-from utils.constants import HTTP_201_CREATED , HTTP_400_BAD_REQUEST , USER_REGISTERED_MESSAGE , INVALID_PASSWORD_ERROR , REQUEST_SENT_MESSAGE , REQUEST_DELETED_MESSAGE
+from utils.constants import HTTP_201_CREATED , HTTP_400_BAD_REQUEST , USER_REGISTERED_MESSAGE , INVALID_PASSWORD_ERROR , REQUEST_SENT_MESSAGE , REQUEST_DELETED_MESSAGE , REQUEST_ACCEPTED_MESSAGE
 import bson.json_util as json_util
 import datetime
 from bson.objectid import ObjectId
@@ -48,7 +48,7 @@ def make_request():
     json_verison = json_util.dumps(request_id)
     return make_response({'message':REQUEST_SENT_MESSAGE , "request": json_verison } , HTTP_201_CREATED)
     
-def remove_friend():
+def remove_request():
     body = json.loads(request.data)
     request_id = body["request_id"]
     
@@ -59,3 +59,11 @@ def remove_friend():
     
     return make_response({'message': REQUEST_DELETED_MESSAGE} , HTTP_201_CREATED)
     
+    
+def accept_request():
+    body = json.loads(request.data)
+    request_id = body["request_id"]
+    
+    Request.accept_request(request_id)
+    
+    return make_response({"message": REQUEST_ACCEPTED_MESSAGE} , HTTP_201_CREATED)
