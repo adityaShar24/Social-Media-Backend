@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from database.mongo import request_collection
+from database.mongo import request_collection , users_collection
 
 class Request:
     def __init__(self, userId1 , userId2 , status = "pending"):
@@ -16,8 +16,13 @@ class Request:
             {"_id":ObjectId(request_id)} , 
             { "$set" : { 'status' : "accepted"}}
         )
-                
         
+        request = request_collection.find_one({"_id": ObjectId(request_id)})
+
         
-    
-    
+        if request:
+            users_collection.update_one({"_id": ObjectId(request['from'])} , { "$push": { "friends": request['to'] } } )
+            
+            users_collection.update_one({"_id": ObjectId(request['to'])} , {"$push": {"friends": request['from']}} )
+
+
