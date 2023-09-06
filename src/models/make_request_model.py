@@ -12,13 +12,11 @@ class Request:
         return request_id
     
     def accept_request(request_id):
-        find_request = request_collection.find_one({"_id": ObjectId(request_id)})
-        
         update_to_accepted = request_collection.update_one(
-            {"_id":request_id} , 
-            { "$set" : { "status" : "accepted"}}
+            {"_id":ObjectId(request_id)} , 
+            { "$set" : { 'status' : "accepted"}}
         )
-        
+                
         
         
     
