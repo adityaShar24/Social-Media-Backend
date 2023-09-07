@@ -3,7 +3,7 @@ from models.user_model import User
 from models.make_request_model import Request
 from database.mongo import request_collection
 from flask_jwt_extended import create_access_token
-from utils.constants import HTTP_201_CREATED , HTTP_400_BAD_REQUEST , USER_REGISTERED_MESSAGE , INVALID_PASSWORD_ERROR , REQUEST_SENT_MESSAGE , REQUEST_DELETED_MESSAGE , REQUEST_ACCEPTED_MESSAGE
+from utils.constants import HTTP_201_CREATED , HTTP_400_BAD_REQUEST , USER_REGISTERED_MESSAGE , INVALID_PASSWORD_ERROR , REQUEST_SENT_MESSAGE , REQUEST_DELETED_MESSAGE , REQUEST_ACCEPTED_MESSAGE , REJECT_REQUEST_MESSAGE
 import bson.json_util as json_util
 import datetime
 from bson.objectid import ObjectId
@@ -67,3 +67,12 @@ def accept_request():
     Request.accept_request(request_id)
     
     return make_response({"message": REQUEST_ACCEPTED_MESSAGE} , HTTP_201_CREATED)
+
+
+def reject_request():
+    body = json.loads(request.data)
+    request_id = body["request_id"]
+
+    Request.reject_request(request_id)
+    
+    return make_response({'message': REJECT_REQUEST_MESSAGE} , HTTP_201_CREATED)
