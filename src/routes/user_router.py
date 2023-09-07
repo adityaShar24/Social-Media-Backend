@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.user_controller import register , login , make_request , remove_request , accept_request
+from controllers.user_controller import register , login , make_request , remove_request , accept_request , reject_request
 auth_bp = Blueprint('auth_bp' , __name__ )
 
 
@@ -20,5 +20,10 @@ def remove_request_wrapper():
     return remove_request()
 
 @auth_bp.post('/accept-request')
-def accept_request_wrapper():
+def response_request_wrapper():
     return accept_request()
+
+@auth_bp.post('/reject-request')
+def response_request_wrapper():
+    return reject_request()
+
