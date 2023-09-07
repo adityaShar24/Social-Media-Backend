@@ -61,7 +61,7 @@ def remove_friend_request_middleware():
         if not request_id:
             return make_response({'message': REQUEST_ID_MISSING_ERROR})
 
-def accept_request_middleware():
+def response_request_middleware():
     if request.endpoint == ACCEPT_REQUEST_ENDPOINT:
         body = json.loads(request.data)
         
@@ -69,3 +69,6 @@ def accept_request_middleware():
         
         if not request_id:
             return make_response({'message': REQUEST_ID_MISSING_ERROR})
+        
+
+
