@@ -25,4 +25,9 @@ class Request:
             
             users_collection.update_one({"_id": ObjectId(request['to'])} , {"$push": {"friends": request['from']}} )
 
-
+    def reject_request(request_id):
+        update_to_rejected = request_collection.update_one(
+            {"_id":ObjectId(request_id)} , 
+            {"$set": {'status':'rejected'}}
+        )
+        
