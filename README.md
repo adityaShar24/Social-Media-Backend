@@ -1,4 +1,4 @@
-# SocialBond Flask Application
+# SocialBond Flask Application - A Social Networking Platform 
 
 A Flask-based web application for managing user accounts, friend requests, and interactions.
 
@@ -11,7 +11,21 @@ A Flask-based web application for managing user accounts, friend requests, and i
 - [API Endpoints](#api-endpoints)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
-- [License](#license)
+
+## Features
+
+- User Registration and Authentication: Users can create accounts, log in, and securely manage their profiles.
+
+- Friendship System: Users can send friend requests, accept or reject requests, and manage their friends list.
+
+- Customizable: SocialBond is highly customizable, allowing you to add new features or modify existing ones to suit your needs.
+
+## Technology Stack
+- Backend: Python, Flask, MongoDB
+
+- Database: MongoDB
+
+- Authentication: JSON Web Tokens (JWT)
 
 ## Getting Started
 
