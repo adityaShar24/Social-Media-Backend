@@ -12,21 +12,19 @@ class Request:
         return request_id
     
     def accept_request(request_id):
-        update_to_accepted = request_collection.update_one(
+        request_collection.update_one(
             {"_id":ObjectId(request_id)} , 
             { "$set" : { 'status' : "accepted"}}
         )
         
         request = request_collection.find_one({"_id": ObjectId(request_id)})
-
         
         if request:
-            users_collection.update_one({"_id": ObjectId(request['from'])} , { "$push": { "friends": request['to'] } } )
-            
-            users_collection.update_one({"_id": ObjectId(request['to'])} , {"$push": {"friends": request['from']}} )
+            users_collection.update_one({"_id": ObjectId(request['from'])}, { "$push": { "friends": request['to'] } } )
+            users_collection.update_one({"_id": ObjectId(request['to'])}, {"$push": {"friends": request['from']}} )
 
     def reject_request(request_id):
-        update_to_rejected = request_collection.update_one(
+        request_collection.update_one(
             {"_id":ObjectId(request_id)} , 
             {"$set": {'status':'rejected'}}
         )
