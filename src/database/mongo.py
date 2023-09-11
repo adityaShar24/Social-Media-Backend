@@ -8,6 +8,7 @@ mongo_client = MongoClient(MONGO_CONNECTION_STRING)
 database = mongo_client['SocialBond']
 users_collection = database['Users']
 request_collection = database['Requests']
+posts_collection = database['Posts']
 
 
 try:
