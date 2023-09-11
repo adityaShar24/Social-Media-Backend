@@ -26,3 +26,5 @@ REQUEST_ACCEPTED_MESSAGE = "request has been accepted!"
 REJECT_REQUEST_MESSAGE = "request has been rejected"
 
 RESPONSE_REQUEST_ENDPOINT = 'auth_bp.response_request_wrapper'
+
+ADD_POST_ENDPOINT = 'auth_bp.post_wrapper'
