@@ -33,3 +33,7 @@ def login():
     return make_response({'message':{'access token':access_token}} , HTTP_201_CREATED)
 
 
+def get_all_users():
+    users = User.get_all_users()
+    json_version = json_util.dumps(users)
+    return make_response({'users':json_version} , HTTP_201_CREATED)
