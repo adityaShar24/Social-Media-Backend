@@ -1,5 +1,5 @@
-CONNECTED_TO_MONGODB = 'Connection to MongoDB Successful!'
-CONNECTION_FAILED = 'Connection to MongoDB Failed'
+CONNECTED_TO_MONGODB = 'Connected to MongoDB'
+CONNECTION_FAILED = 'Failed to connect to MongoDB'
 
 HTTP_201_CREATED = 201
 HTTP_400_BAD_REQUEST = 400
@@ -13,8 +13,9 @@ USER_NOT_EXISTS_ERROR = 'user {username} does not exists'
 
 REGISTER_USER_ENDPOINT = 'auth_bp.register_user_wrapper'
 LOGIN_USER_ENDPOINT = 'auth_bp.login_user_wrapper'
-MAKE_REQUEST_ENDPOINT = 'auth_bp.make_request_wrapper'
-REMOVE_REQUEST_ENDPOINT = 'auth_bp.remove_request_wrapper'
+
+MAKE_REQUEST_ENDPOINT = 'request_bp.make_request_wrapper'
+REMOVE_REQUEST_ENDPOINT = 'request_bp.remove_request_wrapper'
 
 INVALID_PASSWORD_ERROR = 'Invalid password , please provide the correct one.'
 USER_ID_MISSING_ERROR = 'userId field should not be empty'
@@ -25,6 +26,7 @@ REQUEST_ID_MISSING_ERROR = "No request with from current Id"
 REQUEST_ACCEPTED_MESSAGE = "request has been accepted!"
 REJECT_REQUEST_MESSAGE = "request has been rejected"
 
-RESPONSE_REQUEST_ENDPOINT = 'auth_bp.response_request_wrapper'
+RESPONSE_REQUEST_ENDPOINT = 'request_bp.response_request_wrapper'
 
-ADD_POST_ENDPOINT = 'auth_bp.post_wrapper'
+ADD_POST_ENDPOINT = 'post_bp.post_wrapper'
+POST_UPLOADED_MESSAGE = "Post has been uploaded sucessfully"
