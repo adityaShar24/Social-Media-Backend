@@ -12,10 +12,7 @@ class Posts:
         saved_posts = posts_collection.insert_one({'url':self.url , 'likes':self.likes , 'caption':self.caption , 'userId':self.userId , 'comments':self.comments})
         return saved_posts
     
-    def add_posts(postId , userId):
-        post = users_collection.update_one({"_id": ObjectId(userId)}, { "$push": { "posts":ObjectId(postId)}})
+    def add_posts(userId , postId):
+        post = users_collection.update_one({"_id": ObjectId(userId) }, { "$push": { "posts": postId } })
         return post
-        
-        
-        
-        
+            
