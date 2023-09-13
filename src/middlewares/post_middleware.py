@@ -1,5 +1,5 @@
 from flask import request , json , make_response
-from utils.constants import HTTP_400_BAD_REQUEST , ADD_POST_ENDPOINT , USER_ID_MISSING_ERROR , POSTID_MISSING_ERROR
+from utils.constants import HTTP_400_BAD_REQUEST , ADD_POST_ENDPOINT , USER_ID_MISSING_ERROR , POSTID_MISSING_ERROR , ADD_POSTID_ENDPOINT
 
 def post_middleware():
         if request.endpoint == ADD_POST_ENDPOINT:
@@ -20,7 +20,7 @@ def post_middleware():
             
 
 def add_postId_middleware():
-    if request.endpoint == "":
+    if request.endpoint == ADD_POSTID_ENDPOINT:
         body = json.loads(request.data)
         
         userId = body['userId']
