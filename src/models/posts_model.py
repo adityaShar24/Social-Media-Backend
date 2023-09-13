@@ -13,7 +13,7 @@ class Posts:
         return saved_posts
     
     def add_posts(postId , userId):
-        post = users_collection.update_one({"_id": ObjectId(userId)}, { "$push": { "posts": postId}})
+        post = users_collection.update_one({"_id": ObjectId(userId)}, { "$push": { "posts":ObjectId(postId)}})
         return post
         
         
