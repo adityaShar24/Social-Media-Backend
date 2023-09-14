@@ -20,7 +20,7 @@ REMOVE_REQUEST_ENDPOINT = 'request_bp.remove_request_wrapper'
 INVALID_PASSWORD_ERROR = 'Invalid password , please provide the correct one.'
 USER_ID_MISSING_ERROR = 'userId field should not be empty'
 
-POSTID_MISSING_ERROE = 'PostId cannot be empty'
+POSTID_MISSING_ERROR = 'PostId cannot be empty'
 
 REQUEST_SENT_MESSAGE = 'request sent successfully!'
 REQUEST_DELETED_MESSAGE = "request deleted successfully"
@@ -31,4 +31,13 @@ REJECT_REQUEST_MESSAGE = "request has been rejected"
 RESPONSE_REQUEST_ENDPOINT = 'request_bp.response_request_wrapper'
 
 ADD_POST_ENDPOINT = 'post_bp.post_wrapper'
+ADD_POSTID_ENDPOINT = 'post_bp.add_postId_wrapper'
 POST_UPLOADED_MESSAGE = "Post has been uploaded sucessfully"
+
+
+COMMENT_ENDPOINT = 'comment_bp.comment_wrapper'
+REPLY_COMMENT_ENDPOINT = 'comment_bp.reply_comment_wrapper'
+COMMENT_REQUIRED = "comment field should not be empty"
+PARENT_COMMENTID_MISSING_ERROR = 'parent_commentId field should not be empty'
+COMMENT_POSTED_MESSAGE = "comment has been posted successfully"
+COMMENTID_MISSING_ERROR = 'commentId field should not be empty'
