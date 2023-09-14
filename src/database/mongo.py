@@ -9,6 +9,7 @@ database = mongo_client['SocialBond']
 users_collection = database['Users']
 request_collection = database['Requests']
 posts_collection = database['Posts']
+comments_collection = database['Comments']
 
 
 try:
