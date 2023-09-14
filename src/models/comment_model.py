@@ -1,4 +1,4 @@
-from database.mongo import comments_collection
+from database.mongo import comments_collection, users_collection
 from bson.objectid import ObjectId as Ob
 
 class Comment:
@@ -15,3 +15,8 @@ class Comment:
             'userId' : self.userId,
             'parent_commentId' : self.parent_commentId
         })
+
+        
+    def add_commentId(userId , commentId):
+        users_collection.update_one({'_id' : Ob(userId)} , {'$push' : {'comments' : commentId } } )
+    
