@@ -1,5 +1,5 @@
 from flask import request, json , make_response
-from utils.constants import COMMENT_REQUIRED , COMMENT_ENDPOINT , HTTP_400_BAD_REQUEST , POSTID_MISSING_ERROR , USER_ID_MISSING_ERROR , COMMENTID_MISSING_ERROR , REPLY_COMMENT_ENDPOINT
+from utils.constants import COMMENT_REQUIRED , COMMENT_ENDPOINT , HTTP_400_BAD_REQUEST , POSTID_MISSING_ERROR , USER_ID_MISSING_ERROR , COMMENTID_MISSING_ERROR , ADD_COMMENTID_ENDPOINT
 
 
 def comment_middleware():
@@ -19,8 +19,8 @@ def comment_middleware():
         if not userId: 
             return make_response({'message' : USER_ID_MISSING_ERROR} , HTTP_400_BAD_REQUEST)
         
-def reply_comment_middleware():
-    if request.endpoint == REPLY_COMMENT_ENDPOINT:
+def add_commentId_middleware():
+    if request.endpoint == ADD_COMMENTID_ENDPOINT:
         body = json.loads(request.data)
         
         userId = body['userId']
