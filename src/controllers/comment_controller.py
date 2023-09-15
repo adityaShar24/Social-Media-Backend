@@ -23,9 +23,9 @@ def comment():
 def add_commentId():
     body = json.loads(request.data)
     
-    userId = body['userId']
+    postId = body['postId']
     commentId = body['commentId']
     
-    Comment.add_commentId(userId , commentId)
+    Comment.add_commentId(postId , commentId)
     
     return make_response({'message' : ADDED_COMMENTID_MESSAGE } , HTTP_201_CREATED)
