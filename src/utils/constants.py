@@ -36,8 +36,10 @@ POST_UPLOADED_MESSAGE = "Post has been uploaded sucessfully"
 
 
 COMMENT_ENDPOINT = 'comment_bp.comment_wrapper'
-REPLY_COMMENT_ENDPOINT = 'comment_bp.reply_comment_wrapper'
+ADD_COMMENTID_ENDPOINT = 'comment_bp.add_commentId_wrapper'
 COMMENT_REQUIRED = "comment field should not be empty"
 PARENT_COMMENTID_MISSING_ERROR = 'parent_commentId field should not be empty'
 COMMENT_POSTED_MESSAGE = "comment has been posted successfully"
 COMMENTID_MISSING_ERROR = 'commentId field should not be empty'
+
+ADDED_COMMENTID_MESSAGE = "commentId has been added successfully"
