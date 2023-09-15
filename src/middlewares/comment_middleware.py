@@ -8,7 +8,6 @@ def comment_middleware():
         comment = body['comment']
         postId = body['postId']
         userId = body['userId']
-        parent_commentId = body['parent_commentId'] if 'parent_commentId' in body else None
         
         if not comment:
             return make_response({'message' : COMMENT_REQUIRED} , HTTP_400_BAD_REQUEST)
@@ -23,11 +22,11 @@ def add_commentId_middleware():
     if request.endpoint == ADD_COMMENTID_ENDPOINT:
         body = json.loads(request.data)
         
-        userId = body['userId']
+        postId = body['postId']
         commentId = body['commentId']
         
-        if not userId:
-            return make_response({'message' : USER_ID_MISSING_ERROR} , HTTP_400_BAD_REQUEST)
+        if not postId: 
+            return make_response({'message' : POSTID_MISSING_ERROR} , HTTP_400_BAD_REQUEST)
         
         if not commentId:
             return make_response({'message' :  COMMENTID_MISSING_ERROR} , HTTP_400_BAD_REQUEST)
