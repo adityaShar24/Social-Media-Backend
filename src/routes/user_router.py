@@ -4,7 +4,7 @@ from flask_jwt_extended import jwt_required
 from flask_caching import Cache
 auth_bp = Blueprint('auth_bp' , __name__ )
 
-cache = Cache()
+cache = Cache(config={'CACHE_TYPE': 'simple'})
 
 @auth_bp.post('/register')
 def register_user_wrapper():

@@ -1,4 +1,7 @@
 from pymongo import MongoClient
+from models.user_model import schema as user_schema
+from models.posts_model import schema as posts_schema
+from models.make_request_model import schema as request_schema
 from utils.constants import CONNECTED_TO_MONGODB , CONNECTION_FAILED
 
 MONGO_CONNECTION_STRING = 'mongodb+srv://aditya:aditya2004@cluster0.lgjqzvz.mongodb.net/?retryWrites=true&w=majority'
@@ -6,9 +9,9 @@ MONGO_CONNECTION_STRING = 'mongodb+srv://aditya:aditya2004@cluster0.lgjqzvz.mong
 mongo_client = MongoClient(MONGO_CONNECTION_STRING)
 
 database = mongo_client['SocialBond']
-users_collection = database['Users']
-request_collection = database['Requests']
-posts_collection = database['Posts']
+users_collection = database.create_collection('Users', { "validator":{ "$jsonSchema": user_schema } })
+request_collection = database.create_collection('Requests', { "validator": { "$jsonSchema": request_schema } })
+posts_collection = database.create_collection('Posts', { "validator": { "$jsonSchema": posts_schema } })
 comments_collection = database['Comments']
 
 

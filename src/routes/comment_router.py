@@ -9,5 +9,5 @@ def comment_wrapper():
     return comment()
 
 @comment_bp.post('/add-commentId')
-def add_commmenId_wrapper():
+def add_commentId_wrapper():
     return add_commentId()
