@@ -15,7 +15,7 @@ JWTManager(app)
 
 cache.init_app(app)
 
-app.config['SECRET_KEY'] = "my_secret_key_part_2"
+app.config['SECRET_KEY'] = "my_secret_key_part_4"
 
 app.before_request(register_user_middleware)
 app.before_request(login_user_middleware)
