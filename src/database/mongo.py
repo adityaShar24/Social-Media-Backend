@@ -9,7 +9,7 @@ MONGO_CONNECTION_STRING = 'mongodb+srv://aditya:aditya2004@cluster0.lgjqzvz.mong
 
 mongo_client = MongoClient(MONGO_CONNECTION_STRING)
 
-database = mongo_client['SocialBond']
+database = mongo_client['Social-Media']
 users_collection = database.create_collection('Users', { "validator":{ "$jsonSchema": user_schema } })
 request_collection = database.create_collection('Requests', { "validator": { "$jsonSchema": request_schema } })
 posts_collection = database.create_collection('Posts', { "validator": { "$jsonSchema": posts_schema } })
