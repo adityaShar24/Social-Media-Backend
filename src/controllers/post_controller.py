@@ -1,5 +1,6 @@
 from flask import request , json , make_response
-from models.abstract_model import PostsRepository, UserRepository, AbstractRepository
+from database.repositories.user_repository import UserRepository
+from database.repositories.post_repository import PostsRepository
 from utils.constants import HTTP_201_CREATED , POST_UPLOADED_MESSAGE
 import bson.json_util as json_util
 from bson.objectid import ObjectId as Ob

@@ -7,8 +7,8 @@ class AbstractRepository:
     def create(self, data):
         return self.collection.insert_one(data).inserted_id
     
-    def updateOne(self, query, data):
+    def update_one(self, query, data):
         return self.collection.update_one(query, data)
 
-    def findOne(self, query):
-        return self.collection.find_one(query)
+    
+    
