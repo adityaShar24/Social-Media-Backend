@@ -1,5 +1,3 @@
-from database.mongo import users_collection, posts_collection
-
 class AbstractRepository:
     def __init__(self, collection):
         self.collection = collection
