@@ -10,5 +10,10 @@ class AbstractRepository:
     def update_one(self, query, data):
         return self.collection.update_one(query, data)
 
+    def find_one(self, query):
+        return self.collection.find_one(query)
+    
+    def find_many(self, query):
+        return self.collection.find(query)
     
     
