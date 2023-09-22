@@ -14,6 +14,6 @@ def post():
     userId = body['userId']
     
     postId = PostsRepository().create({'url':url , 'caption':caption , 'userId':Ob(userId)})
-    UserRepository().updateOne({"_id": Ob(userId) }, { "$push": { "posts": Ob(postId) } })
+    UserRepository().update_one({"_id": Ob(userId) }, { "$push": { "posts": Ob(postId) } })
     
     return make_response({'message': POST_UPLOADED_MESSAGE, "postId":json_util.dumps(postId) } , HTTP_201_CREATED)

@@ -1,6 +1,7 @@
 from flask import request , json , make_response
 from utils.constants import HTTP_201_CREATED , COMMENT_POSTED_MESSAGE , ADDED_COMMENTID_MESSAGE
-from models.comment_model import Comment
+from database.repositories.comment_repository import CommentsRepository
+from database.repositories.user_repository import UserRepository
 import bson.json_util as bson
 
 
@@ -11,21 +12,12 @@ def comment():
     userId = body['userId']
     parent_commentId = body['parent_commentId'] if 'parent_commentId' in body else None
     
-    user_comment = Comment(comment , postId , userId , parent_commentId)
     
-    saved_comments = user_comment.save_comments()
+    saved_comments = CommentsRepository().create({'comment': comment , 'postId': postId , 'userId': userId , 'parent_commentId': parent_commentId})
+    UserRepository().update_one({"_id": userId }, { "$push": { "comments": saved_comments } })
     
     json_saved_comments = bson.dumps(saved_comments)
     
     return make_response({'message': COMMENT_POSTED_MESSAGE, 'comment': json_saved_comments} , HTTP_201_CREATED)
 
 
-def add_commentId():
-    body = json.loads(request.data)
-    
-    postId = body['postId']
-    commentId = body['commentId']
-    
-    Comment.add_commentId(postId , commentId)
-    
-    return make_response({'message' : ADDED_COMMENTID_MESSAGE } , HTTP_201_CREATED)

@@ -17,3 +17,5 @@ class AbstractRepository:
         return self.collection.find(query)
     
     
+    
+    
