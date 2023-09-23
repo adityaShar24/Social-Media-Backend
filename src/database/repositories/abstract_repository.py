@@ -1,5 +1,3 @@
-from database.mongo import users_collection, posts_collection
-
 class AbstractRepository:
     def __init__(self, collection):
         self.collection = collection
@@ -15,5 +13,10 @@ class AbstractRepository:
     
     def find_many(self, query):
         return self.collection.find(query)
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> 167382643a387f0b9f04d9f56cbc22a4c369ac14
     
     
