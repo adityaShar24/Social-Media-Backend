@@ -17,3 +17,11 @@ def post():
     UserRepository().update_one({"_id": Ob(userId) }, { "$push": { "posts": Ob(postId) } })
     
     return make_response({'message': POST_UPLOADED_MESSAGE, "postId":json_util.dumps(postId) } , HTTP_201_CREATED)
+
+def save_post():
+    body = json.loads(request.data)
+    
+    postId = body['postId']
+    userId = body['userId']
+    
+    UserRepository().update_one({"_id": Ob(userId) }, { "$push": { "saved_posts": Ob(postId) } })

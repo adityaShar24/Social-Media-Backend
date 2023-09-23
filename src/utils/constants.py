@@ -31,7 +31,7 @@ REJECT_REQUEST_MESSAGE = "request has been rejected"
 RESPONSE_REQUEST_ENDPOINT = 'request_bp.response_request_wrapper'
 
 ADD_POST_ENDPOINT = 'post_bp.post_wrapper'
-ADD_POSTID_ENDPOINT = 'post_bp.add_postId_wrapper'
+SAVE_POST_ENDPOINT = 'post_bp.save_post_wrapper'
 POST_UPLOADED_MESSAGE = "Post has been uploaded sucessfully"
 
 

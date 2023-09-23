@@ -6,7 +6,7 @@ from routes.comment_router import comment_bp
 from flask_jwt_extended import JWTManager
 from middlewares.user_middleware import register_user_middleware , login_user_middleware
 from middlewares.request_middleware import make_request_middleware , remove_friend_request_middleware , accept_request_middleware , reject_request_middleware 
-from middlewares.post_middleware import post_middleware , add_postId_middleware
+from middlewares.post_middleware import post_middleware ,save_post_middleware
 from middlewares.comment_middleware import comment_middleware , add_commentId_middleware
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ app.before_request(reject_request_middleware)
 app.before_request(remove_friend_request_middleware)
 
 app.before_request(post_middleware)
-app.before_request(add_postId_middleware)
+app.before_request(save_post_middleware)
 
 app.before_request(comment_middleware)
 app.before_request(add_commentId_middleware)
