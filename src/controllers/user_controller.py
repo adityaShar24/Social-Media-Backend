@@ -11,9 +11,9 @@ def register():
     username = body['username']
     password = body['password']
     
+    saved_user = UserRepository().create({'username':username , 'password':password})
     
-    saved_users = UserRepository().create({'username':username , 'password':password})
-    json_version = json_util.dumps(saved_users)
+    json_version = json_util.dumps(saved_user)
     
     return make_response({'message': USER_REGISTERED_MESSAGE.format(username = username), 'user': json_version} , HTTP_201_CREATED)
 
