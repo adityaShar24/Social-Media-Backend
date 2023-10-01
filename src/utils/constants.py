@@ -33,6 +33,7 @@ RESPONSE_REQUEST_ENDPOINT = 'request_bp.response_request_wrapper'
 ADD_POST_ENDPOINT = 'post_bp.post_wrapper'
 SAVE_POST_ENDPOINT = 'post_bp.save_post_wrapper'
 POST_UPLOADED_MESSAGE = "Post has been uploaded sucessfully"
+POST_SAVED_MESSAGE = "Post has been saved sucessfully"
 
 
 COMMENT_ENDPOINT = 'comment_bp.comment_wrapper'
