@@ -1,3 +1,5 @@
+from bson.objectid import ObjectId
+
 class AbstractRepository:
     def __init__(self, collection):
         self.collection = collection
@@ -13,5 +15,8 @@ class AbstractRepository:
     
     def find_many(self, query):
         return self.collection.find(query)
+    
+    def find_by_id(self, id):
+        return self.collection.find_one({"_id": ObjectId(id)})
     
     
