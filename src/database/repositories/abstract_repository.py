@@ -13,10 +13,5 @@ class AbstractRepository:
     
     def find_many(self, query):
         return self.collection.find(query)
-<<<<<<< HEAD
-=======
-    
-    
->>>>>>> 167382643a387f0b9f04d9f56cbc22a4c369ac14
     
     
