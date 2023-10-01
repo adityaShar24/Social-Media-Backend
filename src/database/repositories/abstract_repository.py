@@ -19,4 +19,5 @@ class AbstractRepository:
     def find_by_id(self, id):
         return self.collection.find_one({"_id": ObjectId(id)})
     
-    
+    def delete_one(self, query):
+        return self.collection.delete_one(query)
