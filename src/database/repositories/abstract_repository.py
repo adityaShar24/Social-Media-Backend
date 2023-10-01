@@ -13,3 +13,6 @@ class AbstractRepository:
     
     def find_many(self, query):
         return self.collection.find(query)
+    
+    def delete_one(self, query):
+        return self.collection.delete_one(query)
