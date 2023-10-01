@@ -13,4 +13,3 @@ class AbstractRepository:
     
     def find_many(self, query):
         return self.collection.find(query)
-
