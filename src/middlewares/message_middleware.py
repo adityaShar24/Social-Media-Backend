@@ -13,6 +13,6 @@ def message_middleware():
         
         if not roomId:
             return make_response({'message': ROOM_ID_MISSING_ERROR} , HTTP_400_BAD_REQUEST)
-        
+    
         if not content:
             return make_response({'message': MESSAGE_TEXT_REQUIRED} , HTTP_400_BAD_REQUEST)
