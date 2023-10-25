@@ -48,3 +48,4 @@ ADDED_COMMENTID_MESSAGE = "commentId has been added successfully"
 ROOM_ENDPOINT = 'room_bp.room_wrapper'
 ROOM_NAME_REQUIRED = 'roomname field should not be empty'
 ROOM_ID_MISSING_ERROR = 'roomId field should not be empty'
+MESSAGE_TEXT_REQUIRED = 'message text field should not be empty'
