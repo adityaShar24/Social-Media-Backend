@@ -11,6 +11,8 @@ cache = Cache(config={'CACHE_TYPE': 'simple'})
 @jwt_required()
 def create_room_wrapper():
     return create_room()
-
-
+        
+@rooms_bp.post('/add-member')
+def add_member_wrapper():
+    return add_member()
 
