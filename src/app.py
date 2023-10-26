@@ -3,6 +3,7 @@ from routes.user_router import auth_bp , cache
 from routes.request_router import request_bp
 from routes.post_router import post_bp
 from routes.comment_router import comment_bp
+from routes.rooms_router import rooms_bp
 from flask_jwt_extended import JWTManager
 from middlewares.user_middleware import register_user_middleware , login_user_middleware
 from middlewares.request_middleware import make_request_middleware , remove_friend_request_middleware , accept_request_middleware , reject_request_middleware 
@@ -42,7 +43,7 @@ app.register_blueprint(auth_bp)
 app.register_blueprint(request_bp)
 app.register_blueprint(post_bp) 
 app.register_blueprint(comment_bp)
-
+app.register_blueprint(rooms_bp)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0' , debug=True)
