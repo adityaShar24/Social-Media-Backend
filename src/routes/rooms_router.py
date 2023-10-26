@@ -16,3 +16,7 @@ def create_room_wrapper():
 def add_member_wrapper():
     return add_member()
 
+@rooms_bp.get('/get-all-rooms')
+@jwt_required()
+def get_all_rooms_wrapper():
+    return get_all_rooms()
