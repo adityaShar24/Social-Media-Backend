@@ -8,6 +8,8 @@ from middlewares.user_middleware import register_user_middleware , login_user_mi
 from middlewares.request_middleware import make_request_middleware , remove_friend_request_middleware , accept_request_middleware , reject_request_middleware 
 from middlewares.post_middleware import post_middleware ,save_post_middleware
 from middlewares.comment_middleware import comment_middleware , add_commentId_middleware
+from middlewares.rooms_middleware import create_room_middleware , add_member_middleware
+from middlewares.message_middleware import message_middleware
 
 app = Flask(__name__)
 
@@ -30,6 +32,11 @@ app.before_request(save_post_middleware)
 
 app.before_request(comment_middleware)
 app.before_request(add_commentId_middleware)
+
+app.before_request(create_room_middleware)
+app.before_request(add_member_middleware)
+
+app.before_request(message_middleware)
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(request_bp)
