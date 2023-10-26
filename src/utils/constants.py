@@ -50,5 +50,6 @@ ROOM_NAME_REQUIRED = 'roomname field should not be empty'
 ROOM_ID_MISSING_ERROR = 'roomId field should not be empty'
 ROOM_CREATED_MESSAGE = 'room has been created successfully'
 ROOM_MEMBER_ADDED_MESSAGE = 'member has been added successfully'
+ROOM_FETCHED_MESSAGE = 'rooms has been fetched successfully'
 
 MESSAGE_TEXT_REQUIRED = 'message text field should not be empty'  
