@@ -12,7 +12,7 @@ def send_message():
     roomId = body['roomId']
     content = body['content']
     
-    emit("message",{"userID":userId,"roomId":roomId,"content":content}, broadcast=True ,to=roomId , namespace='/') 
+    emit("message_sent",{"userID":userId,"roomId":roomId,"content":content}, broadcast=True ,to=roomId , namespace='/') 
     
     messageId = MessagesRepository().create({"userId":userId,"roomId":roomId,"content":content})
     
@@ -23,6 +23,8 @@ def delete_message():
     messageId = request.args.get('messageId')
     
     MessagesRepository().find_one_and_delete({"_id":ObjectId(messageId)})
+    
+    emit("message_deleted",{"messageId":messageId}, broadcast=True , namespace='/')
     
     return make_response({'message': MESSAGE_DELETED} , HTTP_201_CREATED)
 
