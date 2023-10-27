@@ -12,8 +12,8 @@ def create_room_middleware():
         if not userId:
             return make_response({'message': USER_ID_MISSING_ERROR}, HTTP_400_BAD_REQUEST)
         existing_room = RoomsRepository.find_one(roomname)
-      
-      
+        
+        
 def add_member_middleware():
     if request.endpoint == ADD_MEMBER_ENDPOINT:
         body = json.loads(request.data)
