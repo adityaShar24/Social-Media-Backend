@@ -11,13 +11,15 @@ from middlewares.request_middleware import make_request_middleware , remove_frie
 from middlewares.post_middleware import post_middleware ,save_post_middleware
 from middlewares.comment_middleware import comment_middleware , add_commentId_middleware
 from middlewares.rooms_middleware import create_room_middleware , add_member_middleware
-from middlewares.message_middleware import message_middleware
+from middlewares.message_middleware import send_message_middleware
+from routes.events import socketio
 
 app = Flask(__name__)
 
 JWTManager(app)
 
 cache.init_app(app)
+socketio.init_app(app)
 
 app.config['SECRET_KEY'] = "my_secret_key_part_4"
 
@@ -38,7 +40,7 @@ app.before_request(add_commentId_middleware)
 app.before_request(create_room_middleware)
 app.before_request(add_member_middleware)
 
-app.before_request(message_middleware)
+app.before_request(send_message_middleware)
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(request_bp)
@@ -48,5 +50,5 @@ app.register_blueprint(rooms_bp)
 app.register_blueprint(message_bp)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0' , debug=True)
+    socketio.run(app , host='0.0.0.0' , debug = True)
     
