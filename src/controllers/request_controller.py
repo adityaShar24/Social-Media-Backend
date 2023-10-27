@@ -11,7 +11,7 @@ def make_request():
     From = body['From']
     to = body['to']
     
-    request_id = RequestsRepository().create({'from': From , 'to': to})
+    request_id = RequestsRepository().create({'from': ObjectId(From) , 'to': ObjectId(to)})
     UserRepository().update_one({"_id": ObjectId(From) }, { "$push": { "requests": ObjectId(request_id) } })
     
     json_verison = json_util.dumps(request_id)

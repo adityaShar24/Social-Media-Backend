@@ -1,6 +1,6 @@
 from flask import json , request , make_response
 from database.repositories.rooms_repository import RoomsRepository
-from utils.constants import HTTP_201_CREATED , ROOM_CREATED_MESSAGE , ROOMS_FETCHED_MESSAGE , ROOM_MEMBER_ADDED_MESSAGE
+from utils.constants import HTTP_201_CREATED , ROOM_CREATED_MESSAGE , ROOM_FETCHED_MESSAGE , ROOM_MEMBER_ADDED_MESSAGE
 import bson.json_util as json_util
 from bson.objectid import ObjectId
 
@@ -32,4 +32,4 @@ def get_all_rooms():
     
     json_version = json_util.dumps(rooms_list)
     
-    return make_response({"message": ROOMS_FETCHED_MESSAGE , "rooms": json_version } , HTTP_201_CREATED)
+    return make_response({"message": ROOM_FETCHED_MESSAGE , "rooms": json_version } , HTTP_201_CREATED)
