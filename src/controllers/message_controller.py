@@ -22,7 +22,7 @@ def send_message():
 def delete_message():
     messageId = request.args.get('messageId')
     
-    MessagesRepository().delete_one({"_id":ObjectId(messageId)})
+    MessagesRepository().find_one_and_delete({"_id":ObjectId(messageId)})
     
     return make_response({'message': MESSAGE_DELETED} , HTTP_201_CREATED)
 
