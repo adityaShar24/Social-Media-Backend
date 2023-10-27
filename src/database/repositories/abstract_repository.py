@@ -21,3 +21,6 @@ class AbstractRepository:
     
     def delete_one(self, query):
         return self.collection.delete_one(query)
+    
+    def find_one_and_delete(self, query):
+        return self.collection.find_one_and_delete(query)
