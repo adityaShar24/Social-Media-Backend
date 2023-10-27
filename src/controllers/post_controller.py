@@ -1,7 +1,7 @@
 from flask import request , json , make_response
 from database.repositories.user_repository import UserRepository
 from database.repositories.post_repository import PostsRepository
-from utils.constants import HTTP_201_CREATED , POST_UPLOADED_MESSAGE , POST_SAVED_MESSAGE
+from utils.constants import HTTP_201_CREATED , POST_UPLOADED_MESSAGE , POST_SAVED_MESSAGE, HTTP_400_BAD_REQUEST
 import bson.json_util as json_util
 from bson.objectid import ObjectId as Ob
 
@@ -12,6 +12,10 @@ def post():
     url = body['url']
     caption = body['caption']
     userId = body['userId']
+    
+    user = UserRepository().find_one({"_id": Ob(userId)})
+    if user is None:
+        return make_response({'message': 'User not found'} , HTTP_400_BAD_REQUEST)
     
     postId = PostsRepository().create({'url':url , 'caption':caption , 'userId':Ob(userId)})
     UserRepository().update_one({"_id": Ob(userId) }, { "$push": { "posts": Ob(postId) } })
