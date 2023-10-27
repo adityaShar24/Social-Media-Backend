@@ -45,11 +45,12 @@ COMMENTID_MISSING_ERROR = 'commentId field should not be empty'
 
 ADDED_COMMENTID_MESSAGE = "commentId has been added successfully"
 
-ROOM_ENDPOINT = 'room_bp.room_wrapper'
+ROOM_ENDPOINT = 'rooms_bp.create_room_wrapper'
 ROOM_NAME_REQUIRED = 'roomname field should not be empty'
 ROOM_ID_MISSING_ERROR = 'roomId field should not be empty'
 ROOM_CREATED_MESSAGE = 'room has been created successfully'
 ROOM_MEMBER_ADDED_MESSAGE = 'member has been added successfully'
 ROOM_FETCHED_MESSAGE = 'rooms has been fetched successfully'
+ADD_MEMBER_ENDPOINT = 'rooms_bp.add_member_wrapper'
 
 MESSAGE_TEXT_REQUIRED = 'message text field should not be empty'  
