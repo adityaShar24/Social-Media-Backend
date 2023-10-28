@@ -1,18 +1,18 @@
 schema = {
     'bsonType': 'object',
-    'required': ['from' , 'to' , 'status'],
+    'required': ['sender' , 'receiver'],
     'properties': {
-        'from': {
+        'sender': {
             'bsonType': 'objectId',
             'description': 'must be a objectId and is required'
         },
-        'to': {
+        'receiver': {
             'bsonType': 'objectId',
             'description': 'must be a objectId and is required'
         },
         'status': {
             'bsonType': 'string',
-            'description': 'must be a string and is required'
+            'description': 'must be a string',
         }
     }
 }
