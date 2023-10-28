@@ -9,7 +9,7 @@ def create_room():
     roomname = body['roomname']
     userId = body['userId']
     
-    roomID = RoomsRepository().create({'roomname': roomname , 'userId': userId , 'members':[] })
+    roomID = RoomsRepository().create({'roomname': roomname , 'userId':ObjectId(userId) , 'members':[] })
     
     json_version = json_util.dumps(roomID)
     return make_response({'message': ROOM_CREATED_MESSAGE , "room": json_version} , HTTP_201_CREATED)

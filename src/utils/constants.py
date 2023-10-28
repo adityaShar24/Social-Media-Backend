@@ -51,6 +51,7 @@ ROOM_ID_MISSING_ERROR = 'roomId field should not be empty'
 ROOM_CREATED_MESSAGE = 'room has been created successfully'
 ROOM_MEMBER_ADDED_MESSAGE = 'member has been added successfully'
 ROOM_FETCHED_MESSAGE = 'rooms has been fetched successfully'
+ROOM_EXISTS_ERROR = 'room already exists, please enter a unique roomname'
 ADD_MEMBER_ENDPOINT = 'rooms_bp.add_member_wrapper'
 
 MESSAGE_ENDPOINT = 'message_bp.send_message_wrapper'
