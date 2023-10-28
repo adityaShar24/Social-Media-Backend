@@ -15,8 +15,11 @@ schema = {
             'description': 'must be a string and is required'
         },
         'parent_commentId': {
-            'bsonType': 'objectId',
-            'description': 'must be a string and is required'
+            'oneOf': [
+                {'bsonType': 'objectId'},
+                {'bsonType': 'null'}
+            ],
+            'description': 'must be an objectId or null'
         }
     }
 }

@@ -12,8 +12,7 @@ def comment():
     userId = body['userId']
     parent_commentId = body['parent_commentId'] if 'parent_commentId' in body else None
     
-    
-    saved_comments = CommentsRepository().create({'comment': comment , 'postId': ObjectId(postId) , 'userId': ObjectId(userId) , 'parent_commentId': ObjectId(parent_commentId)})
+    saved_comments = CommentsRepository().create({'comment': comment , 'postId': ObjectId(postId) , 'userId': ObjectId(userId) , 'parent_commentId': parent_commentId})
     UserRepository().update_one({"_id": userId }, { "$push": { "comments": saved_comments } })
     
     json_saved_comments = bson.dumps(saved_comments)

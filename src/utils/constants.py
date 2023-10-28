@@ -53,6 +53,7 @@ ROOM_MEMBER_ADDED_MESSAGE = 'member has been added successfully'
 ROOM_FETCHED_MESSAGE = 'rooms has been fetched successfully'
 ADD_MEMBER_ENDPOINT = 'rooms_bp.add_member_wrapper'
 
+MESSAGE_ENDPOINT = 'message_bp.send_message_wrapper'
 MESSAGE_TEXT_REQUIRED = 'message text field should not be empty'
 MESSAGE_SENT = 'message has been sent successfully'  
 MESSAGE_DELETED = 'message has been deleted successfully'

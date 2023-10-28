@@ -5,13 +5,13 @@ from utils.constants import HTTP_400_BAD_REQUEST ,  USER_ID_MISSING_ERROR , MAKE
 def make_request_middleware():
     if request.endpoint == MAKE_REQUEST_ENDPOINT:
         body = json.loads(request.data)
-        From = body['From']
-        to = body['to']
+        sender = body['sender']
+        receiver = body['receiver']
                 
-        if not From:
+        if not sender:
             return make_response({'message': USER_ID_MISSING_ERROR} , HTTP_400_BAD_REQUEST)
         
-        if not to:
+        if not receiver:
             return make_response({'message': USER_ID_MISSING_ERROR} , HTTP_400_BAD_REQUEST)
     
 def remove_friend_request_middleware():

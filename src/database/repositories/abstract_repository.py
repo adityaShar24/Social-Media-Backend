@@ -13,7 +13,7 @@ class AbstractRepository:
     def find_one(self, query):
         return self.collection.find_one(query)
     
-    def find_many(self, query):
+    def find_many(self, query={}):
         return self.collection.find(query)
     
     def find_by_id(self, id):

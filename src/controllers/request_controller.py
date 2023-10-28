@@ -8,11 +8,11 @@ from bson.objectid import ObjectId
 
 def make_request():
     body = json.loads(request.data)
-    From = body['From']
-    to = body['to']
+    sender = body['sender']
+    receiver = body['receiver']
     
-    request_id = RequestsRepository().create({'from': ObjectId(From) , 'to': ObjectId(to)})
-    UserRepository().update_one({"_id": ObjectId(From) }, { "$push": { "requests": ObjectId(request_id) } })
+    request_id = RequestsRepository().create({'sender': ObjectId(sender) , 'receiver': ObjectId(receiver)})
+    UserRepository().update_one({"_id": ObjectId(sender) }, { "$push": { "requests": ObjectId(request_id) } })
     
     json_verison = json_util.dumps(request_id)
     return make_response({'message':REQUEST_SENT_MESSAGE , "request": json_verison } , HTTP_201_CREATED)
@@ -31,8 +31,8 @@ def accept_request():
     request = RequestsRepository().find_one({"_id": ObjectId(request_id)})
     
     if request:
-        UserRepository().update_one({"_id": ObjectId(request['from'])}, { "$push": { "friends": request['to'] } })
-        UserRepository().update_one({"_id": ObjectId(request['to'])}, {"$push": {"friends": request['from']}} )
+        UserRepository().update_one({"_id": ObjectId(request['sender'])}, { "$push": { "friends": request['receiver'] } })
+        UserRepository().update_one({"_id": ObjectId(request['receiver'])}, {"$push": {"friends": request['sender']}} )
 
     
     return make_response({"message": REQUEST_ACCEPTED_MESSAGE} , HTTP_201_CREATED)
@@ -57,7 +57,7 @@ def remove_request():
     
     request_doc = request_collection.find_one({"_id": ObjectId(request_id)})
     
-    fromUser = UserRepository().update_one({ "_id": ObjectId(request_doc['from']) }, { "$pull": { "request_sent": request_id } })
-    toUser = UserRepository().update_one({ "_id": ObjectId(request_doc['to']) }, { "$pull": { "request_received": request_id } })
+    fromUser = UserRepository().update_one({ "_id": ObjectId(request_doc['sender']) }, { "$pull": { "request_sent": request_id } })
+    toUser = UserRepository().update_one({ "_id": ObjectId(request_doc['receiver']) }, { "$pull": { "request_received": request_id } })
     
     return make_response({'message': REQUEST_DELETED_MESSAGE} , HTTP_201_CREATED)

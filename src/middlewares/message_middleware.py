@@ -1,5 +1,5 @@
 from flask import request , json , make_response
-from utils.constants import MESSAGE_TEXT_REQUIRED , MESSAGE_ENDPOINT , HTTP_400_BAD_REQUEST , USER_ID_MISSING_ERROR , ROOM_ID_MISSING_ERROR , MESSAGE_TYPE_MISSING_ERROR44
+from utils.constants import MESSAGE_TEXT_REQUIRED , MESSAGE_ENDPOINT , HTTP_400_BAD_REQUEST , USER_ID_MISSING_ERROR , ROOM_ID_MISSING_ERROR
 
 def send_message_middleware():
     if request.endpoint == MESSAGE_ENDPOINT:
