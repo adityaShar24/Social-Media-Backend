@@ -55,11 +55,11 @@ To run this project, you'll need to set up a Python environment and install its 
 
    ```shell
    https://github.com/adityaShar24/Social-Bond.git
-   cd socialbond-flask
+   cd social-media-flask
 
 
 ### Usage
-- To run the SocialBond Flask Application, execute the following command:
+- To run the Social-Media Flask Application, execute the following command:
 - python app.py
 
 
@@ -73,6 +73,10 @@ To run this project, you'll need to set up a Python environment and install its 
 - Remove Friend Request: DELETE /remove-request
 - Accept Friend Request: POST /accept-request
 - Reject Friend Request: POST /reject-request
+- Create Post: POST /post
+- Comment on Post: POST /comment
+- Create Chat Room: POST /create-room
+- Send Message in Room: POST /send-message
 
 
 ### Contributing
