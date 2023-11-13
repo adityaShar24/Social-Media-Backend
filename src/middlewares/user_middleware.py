@@ -4,6 +4,7 @@ from database.repositories.user_repository import UserRepository
 
 def register_user_middleware():
     if request.endpoint == REGISTER_USER_ENDPOINT:
+        print(REGISTER_USER_ENDPOINT)
         body = json.loads(request.data)
         username = body['username']
         password = body['password']
