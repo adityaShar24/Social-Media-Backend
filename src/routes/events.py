@@ -10,5 +10,6 @@ def handle_connect():
     
 @socketio.on("join_room")
 def handle_join_room(data):
-    emit("test", { "data": "Test completed successfully." })
+    join_room(data["room"])
     print(f"Client joined room: {data['room']}")
+    return { "message": "Joined room successfully." }

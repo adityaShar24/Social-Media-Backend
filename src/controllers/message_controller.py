@@ -11,10 +11,10 @@ def send_message():
     userId = body['userId']
     roomId = body['roomId']
     content = body['content']
+
+    emit("message_sent",{"userID":userId,"roomId":roomId,"message":content}, broadcast=True ,to=roomId , namespace='/') 
     
-    emit("message_sent",{"userID":userId,"roomId":roomId,"content":content}, broadcast=True ,to=roomId , namespace='/') 
-    
-    messageId = MessagesRepository().create({"userId":userId,"roomId":roomId,"content":content})
+    messageId = MessagesRepository().create({"userId":ObjectId(userId),"roomId":ObjectId(roomId),"message":content})
     
     json_version = json_uitl.dumps(messageId)
     return make_response({'message': MESSAGE_SENT , 'data':json_version} , HTTP_201_CREATED)
