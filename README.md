@@ -54,12 +54,12 @@ To run this project, you'll need to set up a Python environment and install its 
 1. **Clone the Repository**
 
    ```shell
-   https://github.com/adityaShar24/Social-Bond.git
+   https://github.com/adityaShar24/Social-Media.git
 
 1. **Change Directory**
 
    ```shell
-    cd social-media-flask
+    cd src
 
 
 ### Usage
