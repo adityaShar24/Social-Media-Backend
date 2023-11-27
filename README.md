@@ -55,7 +55,11 @@ To run this project, you'll need to set up a Python environment and install its 
 
    ```shell
    https://github.com/adityaShar24/Social-Bond.git
-   cd social-media-flask
+
+1. **Change Directory**
+
+   ```shell
+    cd social-media-flask
 
 
 ### Usage
